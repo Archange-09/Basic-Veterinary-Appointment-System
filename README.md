@@ -12,3 +12,5 @@ A desktop-based management tool for veterinary clinics to schedule appointments,
 
 ### Prerequisites
 Make sure you have Python installed on your system and the required database
+
+The original database was deleted :<
