@@ -17,6 +17,7 @@ The original database was deleted :<
 
 **Reconstructed Schema:**
 
+```
 -- Create the Database
 CREATE DATABASE IF NOT EXISTS vet_reserve;
 USE vet_reserve;
@@ -52,3 +53,4 @@ CREATE TABLE appointments (
     PRIMARY KEY (AppointmentID),
     FOREIGN KEY (PetID) REFERENCES pets(PetID)
 );
+```
