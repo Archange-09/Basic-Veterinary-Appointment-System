@@ -14,3 +14,41 @@ A desktop-based management tool for veterinary clinics to schedule appointments,
 Make sure you have Python installed on your system and the required database
 
 The original database was deleted :<
+
+**Reconstructed Schema:**
+
+-- Create the Database
+CREATE DATABASE IF NOT EXISTS vet_reserve;
+USE vet_reserve;
+
+-- 1. Owners Table
+CREATE TABLE owners (
+    OwnerID INT(11) NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Contact_Info VARCHAR(50),
+    Address VARCHAR(80),
+    PRIMARY KEY (OwnerID)
+);
+
+-- 2. Pets Table (Depends on Owners)
+CREATE TABLE pets (
+    PetID INT(11) NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(50),
+    OwnerID INT(11),
+    Species VARCHAR(50),
+    Breed VARCHAR(50),
+    Age INT(11),
+    PRIMARY KEY (PetID),
+    FOREIGN KEY (OwnerID) REFERENCES owners(OwnerID)
+);
+
+-- 3. Appointments Table (Depends on Pets)
+CREATE TABLE appointments (
+    AppointmentID INT(11) NOT NULL AUTO_INCREMENT,
+    PetID INT(11),
+    Date DATETIME,
+    Reason VARCHAR(80),
+    Status VARCHAR(12),
+    PRIMARY KEY (AppointmentID),
+    FOREIGN KEY (PetID) REFERENCES pets(PetID)
+);
